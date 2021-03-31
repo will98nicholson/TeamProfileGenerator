@@ -1,32 +1,72 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
 const generateHTML = require('./generateHTML')
+const intern = require('./employeeclasses/intern')
+const Engineer = require('./employeeclasses/engineer')
+const Intern = require('./employeeclasses/intern')
+const team = [];
 const questions = [
     {
         type: "input",
-        name: "title",
-        message: "What is the title of this project?"
+        name: "name",
+        message: "What is your name?"
     },
 
     {
         type: "input",
-        name: "Description",
-        message: "Please provide a description of your project."
+        name: "ID",
+        message: "Please input your employee ID"
     },
     {
         type: "input",
-        name: "Installation",
-        message: "Please provide instructions for how this application is to be installed."
+        name: "Email",
+        message: "Please provide your email."
     },
     {
         type: "input",
-        name: "Usage",
-        message: "Please provide information on how users should be using this application."
+        name: "officenumber",
+        message: "Please provide your office number."
+    },
+
+];
+const questionsEmployee = [
+    {
+        type: "list",
+        name: "title",
+        message: "What type of employee would you like to add?",
+        choices: ["intern", "engineer", "generate HTML"]
     },
 
 ];
 
+function askEmployee() {
+    inquirer.prompt(questionsEmployee)
+        .then((response) => {
+            switch (response.type) {
+                case "intern":
+                    inquierer.prompt.then((response) => {
+                        const intern = new Intern(response.name, response.ID, response.Email, response.school)
+                        console.log(intern);
+                        team.push(intern);
+                        askEmployee();
+                    })
+                    break
+                case "engineer":
+                    inquierer.prompt.then((response) => {
+                        const engineer = new Engineer(response.name, response.ID, response.Email, response.github)
+                        console.log(engineer);
+                        team.push(engineer);
+                        askEmployee();
+                    })
+                    break
+                case "generate HTML":
+                    console.log(team)
+                    writeToFile('team.html', generateHTML(team))
 
+
+            }
+        })
+}
 
 
 function writeToFile(fileName, data) {
@@ -37,7 +77,12 @@ function writeToFile(fileName, data) {
 function init() {
     inquirer.prompt(questions)
         .then((response) => {
-            const markDown = generateMarkdown(response);
+            //const markDown = generateMarkdown(response);
+            const intern = new intern(response.name, response.ID, response.Email, response.officenumber)
+            console.log(intern);
+            team.push(intern);
+            askEmployee();
+
 
 
             writeToFile('README.md', markDown)
