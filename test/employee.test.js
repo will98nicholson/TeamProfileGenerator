@@ -1,4 +1,4 @@
-//const Manager = require('./employeeclasses/Manager.js');
+const Manager = require('./employeeclasses/Manager.js');
 
 describe('Employee', () => {
     describe('getName', () => {
@@ -7,3 +7,4 @@ describe('Employee', () => {
 
         })
     })
+})
