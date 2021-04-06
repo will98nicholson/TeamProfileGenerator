@@ -76,22 +76,32 @@ function generateHTML(data) {
    
         <title>Team Profiles</title>
         <style>
+        * {
+            background-color: #90e0ef;
+        }
+        .manager {
+            align-items: center;
+            background-color: #caf0f8;
+        }
         .employeeRow {
             display: flex;
+            justify-content: space-between;
+            background-color: #ade8f4;
         }
         .companylogo {
             text-align: center;
+            background-color: #48cae4;
         }
         </style>
         </head>
     <body>
     <h1 class="ui header companylogo">
    
-      Our Company
+      WilliamCo LLC
     
 
   </h1>
-  <div> ${renderManager(data[0])}
+  <div class="manager"> ${renderManager(data[0])}
     </div>
     <div class="employeeRow"> ${renderEngineer(data.filter(employee => employee.getRole() === "Engineer"))}
     ${renderIntern(data.filter(employee => employee.getRole() === "Intern"))}
