@@ -20,6 +20,46 @@ function generateHTML(data) {
         </div>
       </div>`
     }
+    function renderEngineer(engineers) {
+        let engineerHTML = '';
+        engineers.forEach(engineer => {
+            engineerHTML += `<div class="ui card">
+        <div class="content">
+          <div class="header">${engineer.name}</div>
+          <div class="meta">
+            <span class="category">${engineer.getRole()}</span>
+          </div>
+          <div class="description">
+           ${engineer.email}
+          </div>
+        </div>
+        <div class="extra content">
+          <div class="right floated author">
+            ${engineer.githubID}
+          </div>
+        </div>
+      </div>`
+        })
+        return engineerHTML;
+    }
+    function renderIntern(interns) {
+        return `<div class="ui card">
+        <div class="content">
+          <div class="header">${intern.name}</div>
+          <div class="meta">
+            <span class="category">${manager.getRole()}</span>
+          </div>
+          <div class="description">
+           ${intern.email}
+          </div>
+        </div>
+        <div class="extra content">
+          <div class="right floated author">
+            ${intern.school}
+          </div>
+        </div>
+      </div>`
+    }
     return `<!DOCTYPE html>
     <html lang="en">
     <head>
@@ -29,17 +69,31 @@ function generateHTML(data) {
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css" 
     integrity="sha512-8bHTC73gkZ7rZ7vpqUQThUDhqcNFyYi2xgDgPDHc+GXVGHXq+xPjynxIopALmOPqzo9JZj0k6OqqewdGO3EsrQ==" 
     crossorigin="anonymous" />
-    <head>
+   
         <title>Team Profiles</title>
-    </head>
-        <title>Document</title>
-    </head>
+        <style>
+        .employeeRow {
+            display: flex;
+        }
+        </style>
+        </head>
     <body>
-        
+    <h1 class="ui header companylogo">
+   
+      Our Company
+    
+
+  </h1>
+  <div> ${renderManager(data[0])}
+    </div>
+    <div class="employeeRow"> ${renderEngineer(data.filter(employee => employee.getRole() === "Engineer"))}
+    </div>
     </body>
+    
     </html>
     
     
     `
 
 }
+module.exports = generateHTML;

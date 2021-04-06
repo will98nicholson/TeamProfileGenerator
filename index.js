@@ -1,7 +1,7 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
 const generateHTML = require('./generateHTML')
-const intern = require('./employeeclasses/intern')
+const Manager = require('./employeeclasses/manager')
 const Engineer = require('./employeeclasses/engineer')
 const Intern = require('./employeeclasses/intern')
 const team = [];
@@ -38,13 +38,40 @@ const questionsEmployee = [
     },
 
 ];
+const questionsEngineer = [
+
+
+    {
+        type: "input",
+        name: "name",
+        message: "What is the name?"
+    },
+
+    {
+        type: "input",
+        name: "ID",
+        message: "Please input the employee ID"
+    },
+    {
+        type: "input",
+        name: "Email",
+        message: "Please provide the email."
+    },
+    {
+        type: "input",
+        name: "githubID",
+        message: "Please provide the github ID."
+    },
+
+
+]
 
 function askEmployee() {
     inquirer.prompt(questionsEmployee)
         .then((response) => {
-            switch (response.type) {
+            switch (response.title) {
                 case "intern":
-                    inquierer.prompt.then((response) => {
+                    inquirer.prompt.then((response) => {
                         const intern = new Intern(response.name, response.ID, response.Email, response.school)
                         console.log(intern);
                         team.push(intern);
@@ -52,8 +79,8 @@ function askEmployee() {
                     })
                     break
                 case "engineer":
-                    inquierer.prompt.then((response) => {
-                        const engineer = new Engineer(response.name, response.ID, response.Email, response.github)
+                    inquirer.prompt(questionsEngineer).then((response) => {
+                        const engineer = new Engineer(response.name, response.ID, response.Email, response.githubID)
                         console.log(engineer);
                         team.push(engineer);
                         askEmployee();
@@ -78,14 +105,14 @@ function init() {
     inquirer.prompt(questions)
         .then((response) => {
             //const markDown = generateMarkdown(response);
-            const intern = new intern(response.name, response.ID, response.Email, response.officenumber)
-            console.log(intern);
-            team.push(intern);
+            const manager = new Manager(response.name, response.ID, response.Email, response.officenumber)
+            console.log(manager);
+            team.push(manager);
             askEmployee();
 
 
 
-            writeToFile('README.md', markDown)
+
 
         })
 
