@@ -5,6 +5,7 @@ const Manager = require('./employeeclasses/manager')
 const Engineer = require('./employeeclasses/engineer')
 const Intern = require('./employeeclasses/intern')
 const team = [];
+//initial manager questions, assumes first employee input is for the manager
 const questions = [
     {
         type: "input",
@@ -60,10 +61,34 @@ const questionsEngineer = [
     {
         type: "input",
         name: "githubID",
-        message: "Please provide the github ID."
+        message: "Please provide the github ID of the engineer."
     },
 
 
+]
+
+questionsIntern = [
+    {
+        type: "input",
+        name: "name",
+        message: "What is the name?"
+    },
+
+    {
+        type: "input",
+        name: "ID",
+        message: "Please input the employee ID"
+    },
+    {
+        type: "input",
+        name: "Email",
+        message: "Please provide the email."
+    },
+    {
+        type: "input",
+        name: "school",
+        message: "Please provide the school of the intern."
+    },
 ]
 
 function askEmployee() {
@@ -71,7 +96,7 @@ function askEmployee() {
         .then((response) => {
             switch (response.title) {
                 case "intern":
-                    inquirer.prompt.then((response) => {
+                    inquirer.prompt(questionsIntern).then((response) => {
                         const intern = new Intern(response.name, response.ID, response.Email, response.school)
                         console.log(intern);
                         team.push(intern);

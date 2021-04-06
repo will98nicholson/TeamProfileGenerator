@@ -43,11 +43,13 @@ function generateHTML(data) {
         return engineerHTML;
     }
     function renderIntern(interns) {
-        return `<div class="ui card">
+        let internHTML = '';
+        interns.forEach(intern => {
+            internHTML += `<div class="ui card">
         <div class="content">
           <div class="header">${intern.name}</div>
           <div class="meta">
-            <span class="category">${manager.getRole()}</span>
+            <span class="category">${intern.getRole()}</span>
           </div>
           <div class="description">
            ${intern.email}
@@ -59,6 +61,8 @@ function generateHTML(data) {
           </div>
         </div>
       </div>`
+        })
+        return internHTML;
     }
     return `<!DOCTYPE html>
     <html lang="en">
@@ -75,6 +79,9 @@ function generateHTML(data) {
         .employeeRow {
             display: flex;
         }
+        .companylogo {
+            text-align: center;
+        }
         </style>
         </head>
     <body>
@@ -87,6 +94,7 @@ function generateHTML(data) {
   <div> ${renderManager(data[0])}
     </div>
     <div class="employeeRow"> ${renderEngineer(data.filter(employee => employee.getRole() === "Engineer"))}
+    ${renderIntern(data.filter(employee => employee.getRole() === "Intern"))}
     </div>
     </body>
     
