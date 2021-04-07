@@ -86,7 +86,7 @@ function generateHTML(data) {
         .employeeRow {
             display: flex;
             justify-content: space-between;
-            background-color: #ade8f4;
+            
         }
         .companylogo {
             text-align: center;
