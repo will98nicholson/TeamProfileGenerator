@@ -2,8 +2,8 @@
 
 
 function generateHTML(data) {
-    function renderManager(manager) {
-        return `<div class="ui card">
+  function renderManager(manager) {
+    return `<div class="ui card">
         <div class="content">
           <div class="header">${manager.name}</div>
           <div class="meta">
@@ -19,11 +19,11 @@ function generateHTML(data) {
           </div>
         </div>
       </div>`
-    }
-    function renderEngineer(engineers) {
-        let engineerHTML = '';
-        engineers.forEach(engineer => {
-            engineerHTML += `<div class="ui card">
+  }
+  function renderEngineer(engineers) {
+    let engineerHTML = '';
+    engineers.forEach(engineer => {
+      engineerHTML += `<div class="ui card">
         <div class="content">
           <div class="header">${engineer.name}</div>
           <div class="meta">
@@ -39,13 +39,13 @@ function generateHTML(data) {
           </div>
         </div>
       </div>`
-        })
-        return engineerHTML;
-    }
-    function renderIntern(interns) {
-        let internHTML = '';
-        interns.forEach(intern => {
-            internHTML += `<div class="ui card">
+    })
+    return engineerHTML;
+  }
+  function renderIntern(interns) {
+    let internHTML = '';
+    interns.forEach(intern => {
+      internHTML += `<div class="ui card">
         <div class="content">
           <div class="header">${intern.name}</div>
           <div class="meta">
@@ -61,10 +61,10 @@ function generateHTML(data) {
           </div>
         </div>
       </div>`
-        })
-        return internHTML;
-    }
-    return `<!DOCTYPE html>
+    })
+    return internHTML;
+  }
+  return `<!DOCTYPE html>
     <html lang="en">
     <head>
         <meta charset="UTF-8">
@@ -76,9 +76,7 @@ function generateHTML(data) {
    
         <title>Team Profiles</title>
         <style>
-        * {
-            background-color: #90e0ef;
-        }
+
         .manager {
             align-items: center;
             background-color: #caf0f8;
