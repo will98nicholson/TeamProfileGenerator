@@ -35,7 +35,7 @@ const questionsEmployee = [
         type: "list",
         name: "title",
         message: "What type of employee would you like to add?",
-        choices: ["intern", "engineer", "generate HTML"]
+        choices: ["intern", "engineer", "done, create page"]
     },
 
 ];
@@ -111,7 +111,7 @@ function askEmployee() {
                         askEmployee();
                     })
                     break
-                case "generate HTML":
+                case "done, create page":
                     console.log(team)
                     writeToFile('team.html', generateHTML(team))
 

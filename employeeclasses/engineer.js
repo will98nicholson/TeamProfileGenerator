@@ -8,5 +8,8 @@ class Engineer extends Employee {
     getRole() {
         return "Engineer"
     }
+    getGithubID() {
+        return this.githubID;
+    }
 }
 module.exports = Engineer;
