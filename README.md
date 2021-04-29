@@ -17,6 +17,6 @@ Node.js, Javascript, Inquirer, Jest, HTML, Bootstrap, CSS
 
 ### Links
 Github Repository:
-[githubRepository]  https://will98nicholson.github.io/TeamProfile/
+[githubRepository]  https://github.com/will98nicholson/TeamProfileGenerator
 Video Walkthough:
 [videoWalkthough]  https://drive.google.com/file/d/1mikIZ4gxu53auwtEL-SF8SVGNAtiPsq4/view
